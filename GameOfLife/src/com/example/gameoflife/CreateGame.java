@@ -1,34 +1,33 @@
 package com.example.gameoflife;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class StartScreen extends ActionBarActivity {
+public class CreateGame extends ActionBarActivity {
 	
-	Button buttonGameCreate;
+	Button startGame;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.start_screen);
+		setContentView(R.layout.create_game);
 		
-		buttonGameCreate = (Button) findViewById(R.id.newGame);
+		startGame = (Button) findViewById(R.id.startGame);
 		
-		buttonGameCreate.setOnClickListener(new View.OnClickListener() {
+		startGame.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent startCreateGame = new Intent(StartScreen.this, CreateGame.class);
-				startActivity(startCreateGame);
-				
+				Intent startGame = new Intent (CreateGame.this, GameBoard.class);
+				//Add chosen values, player names to intent to pass to game board
+				startActivity(startGame);
 			}
 		});
-		
 	}
 
 	@Override
