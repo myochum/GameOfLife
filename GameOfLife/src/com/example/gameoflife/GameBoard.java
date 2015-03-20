@@ -6,11 +6,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class GameBoard extends ActionBarActivity {
+	
+	String[] topLeftMap, topRightMap, bottomLeftMap, bottomRightMap;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_board);
+		
+		//put game board image in view here
+		
+		Board game = new Board();
+		
+		
+		
+		
 	}
 
 	@Override
