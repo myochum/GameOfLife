@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
@@ -15,87 +15,269 @@
         android:text="Game Setup"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:text="Player 1:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:text="Player 2:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView3"
-        android:text="Player 3:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView4"
-        android:text="Player 4:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toRightOf="@+id/textView2"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_below="@+id/editText2"
-        android:layout_toRightOf="@+id/textView3"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/EditText02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignLeft="@+id/EditText01"
-        android:layout_below="@+id/EditText01"
-        android:ems="10" />
-
     <Button
-        android:id="@+id/startGame"
+        android:id="@+id/startGameBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Start" />
+        android:text="Start!" />
+
+    <TextView
+        android:id="@+id/player3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/startGameBoard"
+        android:layout_alignLeft="@+id/player1"
+        android:layout_marginBottom="30dp"
+        android:text="Player 3"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player3"
+        android:layout_alignBottom="@+id/player3"
+        android:layout_alignLeft="@+id/player2"
+        android:text="player 4"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginRight="58dp"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/startGameBoard"
+        android:text="Player 1"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/player1Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player2Name"
+        android:layout_alignBottom="@+id/player2Name"
+        android:layout_marginRight="18dp"
+        android:layout_toLeftOf="@+id/startGameBoard"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/player2Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player2"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/startGameBoard"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player1"
+        android:layout_alignBottom="@+id/player1"
+        android:layout_alignRight="@+id/player2Name"
+        android:layout_marginRight="32dp"
+        android:text="player 2"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/player4Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player3Name"
+        android:layout_alignBottom="@+id/player3Name"
+        android:layout_alignLeft="@+id/player2Name"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/player3Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/player1Name"
+        android:layout_below="@+id/player4"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/yellowPlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/yellowPlayer1"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/yellow_token"
+        android:src="@drawable/yellow_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/yellowPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/startGameBoard"
+        android:background="@drawable/yellow_token"
+        android:src="@drawable/yellow_token"
+        android:onClick="onClick" />
+
+    <ImageButton
+        android:id="@+id/greenPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/yellowPlayer1"
+        android:background="@drawable/green_token"
+        android:src="@drawable/green_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/bluePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/greenPlayer1"
+        android:background="@drawable/blue_token"
+        android:src="@drawable/blue_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/greenPlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/yellowPlayer3"
+        android:background="@drawable/green_token"
+        android:src="@drawable/green_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/bluePlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/greenPlayer3"
+        android:background="@drawable/blue_token"
+        android:src="@drawable/blue_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/redPlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/bluePlayer3"
+        android:background="@drawable/red_token"
+        android:src="@drawable/red_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/redPlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player3"
+        android:layout_toRightOf="@+id/startGameBoard"
+        android:background="@drawable/red_token"
+        android:src="@drawable/red_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/bluePlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player3"
+        android:layout_toRightOf="@+id/redPlayer4"
+        android:background="@drawable/blue_token"
+        android:src="@drawable/blue_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/greenPlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/bluePlayer4"
+        android:background="@drawable/green_token"
+        android:src="@drawable/green_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/yellowPlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player3"
+        android:layout_toRightOf="@+id/greenPlayer4"
+        android:background="@drawable/yellow_token"
+        android:src="@drawable/yellow_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/yellowPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/greenPlayer2"
+        android:layout_toRightOf="@+id/greenPlayer4"
+        android:background="@drawable/yellow_token"
+        android:src="@drawable/yellow_token"
+        android:onClick="onClick" />
+
+    <ImageButton
+        android:id="@+id/greenPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player2Name"
+        android:layout_toLeftOf="@+id/yellowPlayer2"
+        android:background="@drawable/green_token"
+        android:src="@drawable/green_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/redPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/redPlayer3"
+        android:layout_below="@+id/player1Name"
+        android:background="@drawable/red_token"
+        android:src="@drawable/red_token" 
+        android:onClick="onClick"/>
+
+    <ImageButton
+        android:id="@+id/bluePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player2Name"
+        android:layout_toLeftOf="@+id/greenPlayer2"
+        android:background="@drawable/blue_token"
+        android:onClick="onClick"
+        android:src="@drawable/blue_token" />
+
+    <ImageButton
+        android:id="@+id/redPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player2Name"
+        android:layout_toLeftOf="@+id/bluePlayer2"
+        android:background="@drawable/red_token"
+        android:src="@drawable/red_token" 
+        android:onClick="onClick"/>
 
 </RelativeLayout>
