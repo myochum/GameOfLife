@@ -116,22 +116,22 @@ public class CreateGame extends ActionBarActivity {
 				//Add chosen values, player names to intent to pass to game board
 				int numPlayers = 0;
 				if(player1.getText().length() != 0){
-					startGame.putExtra("player1Name", player1.getText());
+					startGame.putExtra("player1Name", player1.getText().toString());
 					startGame.putExtra("player1Image", player1Image.toString());
 					numPlayers++;
 					}
 				if(player2.getText().length() != 0){
-					startGame.putExtra("player2Name", player2.getText());
+					startGame.putExtra("player2Name", player2.getText().toString());
 					startGame.putExtra("player2Image", player2Image.toString());
 					numPlayers++;
 				}
 				if(player3.getText().length() != 0){
-					startGame.putExtra("player3Name", player3.getText());
+					startGame.putExtra("player3Name", player3.getText().toString());
 					startGame.putExtra("player3Image", player3Image.toString());
 					numPlayers++;
 				}
 				if(player4.getText().length() != 0){
-					startGame.putExtra("player4Name", player4.getText());
+					startGame.putExtra("player4Name", player4.getText().toString());
 					startGame.putExtra("player4Image", player4Image.toString());
 					numPlayers++;
 				}
@@ -150,25 +150,7 @@ public class CreateGame extends ActionBarActivity {
 		
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.player4) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 	@Override
 	public void onBackPressed(){
 	//disable back button	
