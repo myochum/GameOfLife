@@ -1,5 +1,6 @@
 package com.example.pong;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,8 +10,12 @@ import android.os.Bundle;
 
 
 
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gameoflife.R;
 import com.example.pong.AI;
@@ -20,12 +25,13 @@ import com.example.pong.Screen;
 import com.example.pong.InputHandler;
 
 
-public class Pong extends Activity{
+public class Pong extends Activity implements OnTouchListener{
 
 	private static final long serialVersionUID = 1L;
 
-	public static int width = 800;
-	public static int height = width / 16 * 9;
+	//Changed to be the size of device instead 
+	public static int width;
+	public static int height;
 	public static final String title = "Pong";
 	private boolean running = false;
 
@@ -46,6 +52,12 @@ public class Pong extends Activity{
 	
 	private boolean win;
 	
+	private Button startGame;
+	private TextView pongScore;
+	
+	
+
+	
 	
 	
 	//ANDROID
@@ -54,17 +66,24 @@ public class Pong extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pong_start);
 
-		Button startGame = (Button) findViewById(R.id.startPong);
+		startGame = (Button) findViewById(R.id.startPong);
+		pongScore = (TextView) findViewById(R.id.pongScore);
 		
 		Intent boardInfo = getIntent();
 		playerNum = boardInfo.getStringExtra("playerNum");
 
-		final gameThread gameThread = new gameThread();
+		final gameThread gameThread = new gameThread(this);
 
 		startGame.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				//Remove button
+				startGame.setVisibility(View.GONE);
+				pongScore.setText(score + "     " + 0);
+				
+				//Start the game
 				gameThread.run();
+				
 			}
 		});
 
@@ -117,11 +136,25 @@ public class Pong extends Activity{
 	}
 
 
-
+	//Using a method with new API, instead of lowest target from manifest file
+	@SuppressLint("NewApi")
 	public class gameThread implements Runnable{
+		
+		private Pong gameContext; 
+		
+		public gameThread(Pong gameContext){
+			this.gameContext = gameContext;
+		}
 
 		@Override
 		public void run() {
+			
+			//Get the size of the player screen
+			Display mdisp = getWindowManager().getDefaultDisplay();
+			Point mdispSize = new Point();
+			mdisp.getSize(mdispSize);
+			width = mdispSize.x;
+			height = mdispSize.y;
 			
 			
 			Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
@@ -181,29 +214,16 @@ public class Pong extends Activity{
 			}
 			player.update();
 			ai.update(ball);
-			ball.update(this);
+			ball.update(gameContext);
 
 		};
 
 		public void render() {
-//			BufferStrategy bs = getBufferStrategy();
-//			if (bs == null) {
-//				createBufferStrategy(3);
-//				return;
-//			}
+
 
 			screen.clear();
 
-//			for (int i = 0; i < pixels.length; i++) {
-//				pixels[i] = screen.pixels[i];
-//			}
-	//
-//			Graphics g = bs.getDrawGraphics();
-	//
-//			g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-//			player.render(g);
-//			ai.render(g);
-//			ball.render(g);
+
 			
 			//ANDROID
 			player.render(pongBoard);
@@ -211,23 +231,59 @@ public class Pong extends Activity{
 			ball.render(pongBoard);
 			
 
-			if (lives < 0) {
-				g.drawString("GAME OVER", getWidth() / 2, getHeight() / 2);
-				g.drawString("Score: " + score, getWidth() / 2,
-						getHeight() / 2 + 20);
+			pongScore.setText(score + "   " + (3 - lives));
+			
 
-			} else {
-				g.drawString("Score: " + score + " --- Lives: " + lives, 0,
-						getHeight());
-			}
-//			g.dispose();
-//			bs.show();
 			if (lives < 0) {
 				stop();
 			}
 		}
 		
 	}
+
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+//		for(int i = 0; i < key.getTouchCount(mo); i++) {
+//			int tx = (int) key.getX(mo, i);
+//			int ty = (int) key.getY(mo, i);
+//			
+//			// Bottom paddle moves when we are playing in one or two player mode and the touch
+//			// was in the lower quartile of the screen.
+//			if(mBlue.player && mBlue.inTouchbox(tx,ty)) {
+//				mBlue.destination = tx;
+//			}
+//			else if(mRed.player && mRed.inTouchbox(tx,ty)) {
+//				mRed.destination = tx;
+//			}
+//			else if(mo.getAction() == MotionEvent.ACTION_DOWN && mPauseTouchBox.contains(tx, ty)) {
+//				if(mCurrentState != State.Stopped) {
+//					mLastState = mCurrentState;
+//					mCurrentState = State.Stopped;
+//				}
+//				else {
+//					mCurrentState = mLastState;
+//					mLastState = State.Stopped;
+//				}
+//			}
+//			
+//			// In case a player wants to join in...
+//			if(mo.getAction() == MotionEvent.ACTION_DOWN) {
+//				if(!mBlue.player && mBlue.inTouchbox(tx,ty)) {
+//					mBlue.player = true;
+//				}
+//				else if(!mRed.player && mRed.inTouchbox(tx,ty)) {
+//					mRed.player = true;
+//				}
+//			}
+//		}
+		
+		return true;
+	}
+
+
+
+
 
 }
 
