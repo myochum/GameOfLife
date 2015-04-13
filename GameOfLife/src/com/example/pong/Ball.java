@@ -71,7 +71,7 @@ public class Ball {
 			}
 		}
 		if (down) {
-			if (y >= game.getHeight() - size) {
+			if (y >= game.height - size) {
 				down = false;
 				up = true;
 			} else {
@@ -87,7 +87,7 @@ public class Ball {
 			}
 		}
 		if (right) {
-			if (x >= game.getWidth() - size) {
+			if (x >= game.width - size) {
 				right = false;
 				left = true;
 			} else {

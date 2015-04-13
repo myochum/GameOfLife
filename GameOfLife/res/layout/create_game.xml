@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/gameSetup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -51,7 +51,7 @@
         android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/pongScore"
         android:layout_marginRight="58dp"
         android:layout_marginTop="24dp"
         android:layout_toLeftOf="@+id/startGameBoard"
@@ -120,164 +120,419 @@
         <requestFocus />
     </EditText>
 
-    <ImageButton
-        android:id="@+id/yellowPlayer3"
+    <HorizontalScrollView
+        android:id="@+id/player1Chooser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/yellowPlayer1"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/yellow_token"
-        android:src="@drawable/yellow_token" 
-        android:onClick="onClick"/>
+        android:layout_alignLeft="@+id/player1Name"
+        android:layout_alignRight="@+id/player1Name"
+        android:layout_below="@+id/player2Name" >
 
-    <ImageButton
-        android:id="@+id/yellowPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/startGameBoard"
-        android:background="@drawable/yellow_token"
-        android:src="@drawable/yellow_token"
-        android:onClick="onClick" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/greenPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/yellowPlayer1"
-        android:background="@drawable/green_token"
-        android:src="@drawable/green_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/applePlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/apple_icon"
+                android:onClick="onClick"
+                android:src="@drawable/apple_icon" />
 
-    <ImageButton
-        android:id="@+id/bluePlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/greenPlayer1"
-        android:background="@drawable/blue_token"
-        android:src="@drawable/blue_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/bananaPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/banana_icon"
+                android:onClick="onClick"
+                android:src="@drawable/banana_icon" />
 
-    <ImageButton
-        android:id="@+id/greenPlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/yellowPlayer3"
-        android:background="@drawable/green_token"
-        android:src="@drawable/green_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/crabPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/crab_icon"
+                android:onClick="onClick"
+                android:src="@drawable/crab_icon" />
 
-    <ImageButton
-        android:id="@+id/bluePlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/greenPlayer3"
-        android:background="@drawable/blue_token"
-        android:src="@drawable/blue_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/facePlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/face_icon"
+                android:onClick="onClick"
+                android:src="@drawable/face_icon" />
 
-    <ImageButton
-        android:id="@+id/redPlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/bluePlayer3"
-        android:background="@drawable/red_token"
-        android:src="@drawable/red_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/footPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/foot_icon"
+                android:onClick="onClick"
+                android:src="@drawable/foot_icon" />
 
-    <ImageButton
-        android:id="@+id/redPlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player3"
-        android:layout_toRightOf="@+id/startGameBoard"
-        android:background="@drawable/red_token"
-        android:src="@drawable/red_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/greenPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_icon"
+                android:onClick="onClick"
+                android:src="@drawable/green_icon" />
 
-    <ImageButton
-        android:id="@+id/bluePlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player3"
-        android:layout_toRightOf="@+id/redPlayer4"
-        android:background="@drawable/blue_token"
-        android:src="@drawable/blue_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/hatPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hat_icon"
+                android:onClick="onClick"
+                android:src="@drawable/hat_icon" />
 
-    <ImageButton
-        android:id="@+id/greenPlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/bluePlayer4"
-        android:background="@drawable/green_token"
-        android:src="@drawable/green_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/needlePlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/needle_icon"
+                android:onClick="onClick"
+                android:src="@drawable/needle_icon" />
 
-    <ImageButton
-        android:id="@+id/yellowPlayer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player3"
-        android:layout_toRightOf="@+id/greenPlayer4"
-        android:background="@drawable/yellow_token"
-        android:src="@drawable/yellow_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/omegaPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/omega_icon"
+                android:onClick="onClick"
+                android:src="@drawable/omega_icon" />
+                                                                       
 
-    <ImageButton
-        android:id="@+id/yellowPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/greenPlayer2"
-        android:layout_toRightOf="@+id/greenPlayer4"
-        android:background="@drawable/yellow_token"
-        android:src="@drawable/yellow_token"
-        android:onClick="onClick" />
+            <ImageButton
+                android:id="@+id/smileyPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smiley_icon"
+                android:onClick="onClick"
+                android:src="@drawable/smiley_icon" />
 
-    <ImageButton
-        android:id="@+id/greenPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player2Name"
-        android:layout_toLeftOf="@+id/yellowPlayer2"
-        android:background="@drawable/green_token"
-        android:src="@drawable/green_token" 
-        android:onClick="onClick"/>
+            <ImageButton
+                android:id="@+id/sunPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sun_icon"
+                android:onClick="onClick"
+                android:src="@drawable/sun_icon" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
-    <ImageButton
-        android:id="@+id/redPlayer1"
+    <HorizontalScrollView
+        android:id="@+id/player2Chooser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/redPlayer3"
-        android:layout_below="@+id/player1Name"
-        android:background="@drawable/red_token"
-        android:src="@drawable/red_token" 
-        android:onClick="onClick"/>
+        android:layout_alignBottom="@+id/player1Chooser"
+        android:layout_alignLeft="@+id/player2Name"
+        android:layout_alignRight="@+id/player2Name"
+        android:layout_alignTop="@+id/player1Chooser" >
 
-    <ImageButton
-        android:id="@+id/bluePlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player2Name"
-        android:layout_toLeftOf="@+id/greenPlayer2"
-        android:background="@drawable/blue_token"
-        android:onClick="onClick"
-        android:src="@drawable/blue_token" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/redPlayer2"
+            <ImageButton
+                android:id="@+id/applePlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/apple_icon"
+                android:onClick="onClick"
+                android:src="@drawable/apple_icon" />
+
+            <ImageButton
+                android:id="@+id/bananaPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/banana_icon"
+                android:onClick="onClick"
+                android:src="@drawable/banana_icon" />
+
+            <ImageButton
+                android:id="@+id/crabPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/crab_icon"
+                android:onClick="onClick"
+                android:src="@drawable/crab_icon" />
+
+            <ImageButton
+                android:id="@+id/facePlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/face_icon"
+                android:onClick="onClick"
+                android:src="@drawable/face_icon" />
+
+            <ImageButton
+                android:id="@+id/footPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/foot_icon"
+                android:onClick="onClick"
+                android:src="@drawable/foot_icon" />
+
+            <ImageButton
+                android:id="@+id/greenPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_icon"
+                android:onClick="onClick"
+                android:src="@drawable/green_icon" />
+
+            <ImageButton
+                android:id="@+id/hatPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hat_icon"
+                android:onClick="onClick"
+                android:src="@drawable/hat_icon" />
+
+            <ImageButton
+                android:id="@+id/needlePlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/needle_icon"
+                android:onClick="onClick"
+                android:src="@drawable/needle_icon" />
+
+            <ImageButton
+                android:id="@+id/omegaPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/omega_icon"
+                android:onClick="onClick"
+                android:src="@drawable/omega_icon" />
+
+            <ImageButton
+                android:id="@+id/smileyPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smiley_icon"
+                android:onClick="onClick"
+                android:src="@drawable/smiley_icon" />
+
+            <ImageButton
+                android:id="@+id/sunPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sun_icon"
+                android:onClick="onClick"
+                android:src="@drawable/sun_icon" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/player3Chooser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/player2Name"
-        android:layout_toLeftOf="@+id/bluePlayer2"
-        android:background="@drawable/red_token"
-        android:src="@drawable/red_token" 
-        android:onClick="onClick"/>
+        android:layout_alignLeft="@+id/player3Name"
+        android:layout_alignRight="@+id/player3Name"
+        android:layout_below="@+id/player3Name" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/applePlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/apple_icon"
+                android:onClick="onClick"
+                android:src="@drawable/apple_icon" />
+
+            <ImageButton
+                android:id="@+id/bananaPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/banana_icon"
+                android:onClick="onClick"
+                android:src="@drawable/banana_icon" />
+
+            <ImageButton
+                android:id="@+id/crabPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/crab_icon"
+                android:onClick="onClick"
+                android:src="@drawable/crab_icon" />
+
+            <ImageButton
+                android:id="@+id/facePlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/face_icon"
+                android:onClick="onClick"
+                android:src="@drawable/face_icon" />
+
+            <ImageButton
+                android:id="@+id/footPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/foot_icon"
+                android:onClick="onClick"
+                android:src="@drawable/foot_icon" />
+
+            <ImageButton
+                android:id="@+id/greenPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_icon"
+                android:onClick="onClick"
+                android:src="@drawable/green_icon" />
+
+            <ImageButton
+                android:id="@+id/hatPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hat_icon"
+                android:onClick="onClick"
+                android:src="@drawable/hat_icon" />
+
+            <ImageButton
+                android:id="@+id/needlePlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/needle_icon"
+                android:onClick="onClick"
+                android:src="@drawable/needle_icon" />
+
+            <ImageButton
+                android:id="@+id/omegaPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/omega_icon"
+                android:onClick="onClick"
+                android:src="@drawable/omega_icon" />
+
+            <ImageButton
+                android:id="@+id/smileyPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smiley_icon"
+                android:onClick="onClick"
+                android:src="@drawable/smiley_icon" />
+
+            <ImageButton
+                android:id="@+id/sunPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sun_icon"
+                android:onClick="onClick"
+                android:src="@drawable/sun_icon" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/player4Chooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/player3Chooser"
+        android:layout_alignLeft="@+id/player4Name"
+        android:layout_alignRight="@+id/player4Name"
+        android:layout_alignTop="@+id/player3Chooser" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/applePlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/apple_icon"
+                android:onClick="onClick"
+                android:src="@drawable/apple_icon" />
+
+            <ImageButton
+                android:id="@+id/bananaPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/banana_icon"
+                android:onClick="onClick"
+                android:src="@drawable/banana_icon" />
+
+            <ImageButton
+                android:id="@+id/crabPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/crab_icon"
+                android:onClick="onClick"
+                android:src="@drawable/crab_icon" />
+
+            <ImageButton
+                android:id="@+id/facePlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/face_icon"
+                android:onClick="onClick"
+                android:src="@drawable/face_icon" />
+
+            <ImageButton
+                android:id="@+id/footPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/foot_icon"
+                android:onClick="onClick"
+                android:src="@drawable/foot_icon" />
+
+            <ImageButton
+                android:id="@+id/greenPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_icon"
+                android:onClick="onClick"
+                android:src="@drawable/green_icon" />
+
+            <ImageButton
+                android:id="@+id/hatPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hat_icon"
+                android:onClick="onClick"
+                android:src="@drawable/hat_icon" />
+
+            <ImageButton
+                android:id="@+id/needlePlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/needle_icon"
+                android:onClick="onClick"
+                android:src="@drawable/needle_icon" />
+
+            <ImageButton
+                android:id="@+id/omegaPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/omega_icon"
+                android:onClick="onClick"
+                android:src="@drawable/omega_icon" />
+
+            <ImageButton
+                android:id="@+id/smileyPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smiley_icon"
+                android:onClick="onClick"
+                android:src="@drawable/smiley_icon" />
+
+            <ImageButton
+                android:id="@+id/sunPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sun_icon"
+                android:onClick="onClick"
+                android:src="@drawable/sun_icon" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>

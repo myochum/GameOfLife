@@ -95,21 +95,21 @@ public class GameBoard extends ActionBarActivity {
 			if(player2Name !=null){
 			player2Image = Uri.parse(intentReturn.getStringExtra("player2Image"));
 			player2 = new Sprite(intentReturn.getStringExtra("player2Image"), player2Name);
-			players.add(1, player2);
+			players.add(numPlayers, player2);
 			numPlayers++;
 			}
 			
 			if(player3Name !=null){
 			player3Image = Uri.parse(intentReturn.getStringExtra("player3Image"));
 			player3 = new Sprite(intentReturn.getStringExtra("player3Image"), player3Name);
-			players.add(2, player3);
+			players.add(numPlayers, player3);
 			numPlayers++;
 			}
 			
 			if(player4Name !=null){
 			player4Image = Uri.parse(intentReturn.getStringExtra("player4Image"));
 			player4 = new Sprite(intentReturn.getStringExtra("player4Image"), player4Name);
-			players.add(3, player4);
+			players.add(numPlayers, player4);
 			numPlayers++;
 			}
 			

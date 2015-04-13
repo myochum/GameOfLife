@@ -13,8 +13,8 @@ public class InputHandler implements KeyListener {
 	public boolean up, down;
 
 	public void update() {
-		up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
-		down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
+		//up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
+		//down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
 
 	}
 
