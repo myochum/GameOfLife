@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +19,12 @@ public class CreateGame extends ActionBarActivity {
 	
 	Button startGame;
 	
-	ImageButton applePlayer1, bananaPlayer1, crabPlayer1, facePlayer1, footPlayer1, greenPlayer1, hatPlayer1, needlePlayer1, omegaPlayer1, smileyPlayer1, sunPlayer1, 
-	applePlayer2, bananaPlayer2, crabPlayer2, facePlayer2, footPlayer2, greenPlayer2, hatPlayer2, needlePlayer2, omegaPlayer2, smileyPlayer2, sunPlayer2,
-	applePlayer3, bananaPlayer3, crabPlayer3, facePlayer3, footPlayer3, greenPlayer3, hatPlayer3, needlePlayer3, omegaPlayer3, smileyPlayer3, sunPlayer3,
-	applePlayer4, bananaPlayer4, crabPlayer4, facePlayer4, footPlayer4, greenPlayer4, hatPlayer4, needlePlayer4, omegaPlayer4, smileyPlayer4, sunPlayer4;
+	ImageButton p1icon1, p1icon2,p1icon3,p1icon4,p1icon5,p1icon6,p1icon7,p1icon8,
+	p2icon1, p2icon2,p2icon3,p2icon4,p2icon5,p2icon6,p2icon7,p2icon8,
+	p3icon1, p3icon2,p3icon3,p3icon4,p3icon5,p3icon6,p3icon7,p3icon8,
+	p4icon1, p4icon2,p4icon3,p4icon4,p4icon5,p4icon6,p4icon7,p4icon8;
+	
+	ImageView p1Selected, p2Selected, p3Selected, p4Selected;
 	
 	String player1Name, player2Name, player3Name, player4Name;
 	
@@ -29,84 +32,81 @@ public class CreateGame extends ActionBarActivity {
 	
 	TextView gameSetup, playText1, playText2, playText3, playText4;
 	
-	Uri player1Image, player2Image, player3Image, player4Image;
+
+
+	int player1Image, player2Image, player3Image, player4Image;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.create_game);
+		setContentView(R.layout.game_setup);
 		
-		gameSetup = (TextView) findViewById(R.id.gameSetup);
+		//Set up fonts
+		Typeface font = Typeface.createFromAsset(getAssets(),
+				"fonts/androidnation.ttf");
+		getSupportActionBar().setTitle("Create Your Players");
 		playText1 = (TextView) findViewById(R.id.player1);
 		playText2 = (TextView) findViewById(R.id.player2);
 		playText3 = (TextView) findViewById(R.id.player3);
 		playText4 = (TextView) findViewById(R.id.player4);
-		
-		
-		//must set up buttons to show when clicked
-		//through the icons
-		startGame = (Button) findViewById(R.id.startGameBoard);
-		applePlayer1 = (ImageButton) findViewById(R.id.applePlayer1);
-		bananaPlayer1 = (ImageButton) findViewById(R.id.bananaPlayer1);
-		crabPlayer1 = (ImageButton) findViewById(R.id.crabPlayer1);
-		facePlayer1 = (ImageButton) findViewById(R.id.facePlayer1);
-		footPlayer1 = (ImageButton) findViewById(R.id.footPlayer1);
-		greenPlayer1 = (ImageButton) findViewById(R.id.greenPlayer1);
-		hatPlayer1 = (ImageButton) findViewById(R.id.hatPlayer1);
-		needlePlayer1 = (ImageButton) findViewById(R.id.needlePlayer1);
-		omegaPlayer1 = (ImageButton) findViewById(R.id.omegaPlayer1);
-		smileyPlayer1 = (ImageButton) findViewById(R.id.smileyPlayer1);
-		sunPlayer1 = (ImageButton) findViewById(R.id.sunPlayer1);
-		
-		applePlayer2 = (ImageButton) findViewById(R.id.applePlayer2);
-		bananaPlayer2 = (ImageButton) findViewById(R.id.bananaPlayer2);
-		crabPlayer2 = (ImageButton) findViewById(R.id.crabPlayer2);
-		facePlayer2 = (ImageButton) findViewById(R.id.facePlayer2);
-		footPlayer2 = (ImageButton) findViewById(R.id.footPlayer2);
-		greenPlayer2 = (ImageButton) findViewById(R.id.greenPlayer2);
-		hatPlayer2 = (ImageButton) findViewById(R.id.hatPlayer2);
-		needlePlayer2 = (ImageButton) findViewById(R.id.needlePlayer2);
-		omegaPlayer2 = (ImageButton) findViewById(R.id.omegaPlayer2);
-		smileyPlayer2 = (ImageButton) findViewById(R.id.smileyPlayer2);
-		sunPlayer2 = (ImageButton) findViewById(R.id.sunPlayer2);
-		
-		applePlayer3 = (ImageButton) findViewById(R.id.applePlayer3);
-		bananaPlayer3 = (ImageButton) findViewById(R.id.bananaPlayer3);
-		crabPlayer3 = (ImageButton) findViewById(R.id.crabPlayer3);
-		facePlayer3 = (ImageButton) findViewById(R.id.facePlayer3);
-		footPlayer3 = (ImageButton) findViewById(R.id.footPlayer3);
-		greenPlayer3 = (ImageButton) findViewById(R.id.greenPlayer3);
-		hatPlayer3 = (ImageButton) findViewById(R.id.hatPlayer3);
-		needlePlayer3 = (ImageButton) findViewById(R.id.needlePlayer3);
-		omegaPlayer3 = (ImageButton) findViewById(R.id.omegaPlayer3);
-		smileyPlayer3 = (ImageButton) findViewById(R.id.smileyPlayer3);
-		sunPlayer3 = (ImageButton) findViewById(R.id.sunPlayer3);
-		
-		applePlayer4 = (ImageButton) findViewById(R.id.applePlayer4);
-		bananaPlayer4 = (ImageButton) findViewById(R.id.bananaPlayer4);
-		crabPlayer4 = (ImageButton) findViewById(R.id.crabPlayer4);
-		facePlayer4 = (ImageButton) findViewById(R.id.facePlayer4);
-		footPlayer4 = (ImageButton) findViewById(R.id.footPlayer4);
-		greenPlayer4 = (ImageButton) findViewById(R.id.greenPlayer4);
-		hatPlayer4 = (ImageButton) findViewById(R.id.hatPlayer4);
-		needlePlayer4 = (ImageButton) findViewById(R.id.needlePlayer4);
-		omegaPlayer4 = (ImageButton) findViewById(R.id.omegaPlayer4);
-		smileyPlayer4 = (ImageButton) findViewById(R.id.smileyPlayer4);
-		sunPlayer4 = (ImageButton) findViewById(R.id.sunPlayer4);
-		
-		player1 = (EditText) findViewById(R.id.player1Name);
-		player2 = (EditText) findViewById(R.id.player2Name);
-		player3 = (EditText) findViewById(R.id.player3Name);
-		player4 = (EditText) findViewById(R.id.player4Name);
-		
-		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Captain_Howdy.ttf");
-		gameSetup.setTypeface(font);
 		playText1.setTypeface(font);
 		playText2.setTypeface(font);
 		playText3.setTypeface(font);
 		playText4.setTypeface(font);
 		
+
+		startGame = (Button) findViewById(R.id.startGameBoard);
 		
+		//Initialize buttons
+		p1icon1 = (ImageButton) findViewById(R.id.p1icon1);
+		p1icon2 = (ImageButton) findViewById(R.id.p1icon2);
+		p1icon3 = (ImageButton) findViewById(R.id.p1icon3);
+		p1icon4 = (ImageButton) findViewById(R.id.p1icon4);
+		p1icon5 = (ImageButton) findViewById(R.id.p1icon5);
+		p1icon6 = (ImageButton) findViewById(R.id.p1icon6);
+		p1icon7 = (ImageButton) findViewById(R.id.p1icon7);
+		p1icon8 = (ImageButton) findViewById(R.id.p1icon8);
+		
+		p2icon1 = (ImageButton) findViewById(R.id.p2icon1);
+		p2icon2 = (ImageButton) findViewById(R.id.p2icon2);
+		p2icon3 = (ImageButton) findViewById(R.id.p2icon3);
+		p2icon4 = (ImageButton) findViewById(R.id.p2icon4);
+		p2icon5 = (ImageButton) findViewById(R.id.p2icon5);
+		p2icon6 = (ImageButton) findViewById(R.id.p2icon6);
+		p2icon7 = (ImageButton) findViewById(R.id.p2icon7);
+		p2icon8 = (ImageButton) findViewById(R.id.p2icon8);
+		
+		p3icon1 = (ImageButton) findViewById(R.id.p3icon1);
+		p3icon2 = (ImageButton) findViewById(R.id.p3icon2);
+		p3icon3 = (ImageButton) findViewById(R.id.p3icon3);
+		p3icon4 = (ImageButton) findViewById(R.id.p3icon4);
+		p3icon5 = (ImageButton) findViewById(R.id.p3icon5);
+		p3icon6 = (ImageButton) findViewById(R.id.p3icon6);
+		p3icon7 = (ImageButton) findViewById(R.id.p3icon7);
+		p3icon8 = (ImageButton) findViewById(R.id.p3icon8);
+		
+		p4icon1 = (ImageButton) findViewById(R.id.p4icon1);
+		p4icon2 = (ImageButton) findViewById(R.id.p4icon2);
+		p4icon3 = (ImageButton) findViewById(R.id.p4icon3);
+		p4icon4 = (ImageButton) findViewById(R.id.p4icon4);
+		p4icon5 = (ImageButton) findViewById(R.id.p4icon5);
+		p4icon6 = (ImageButton) findViewById(R.id.p4icon6);
+		p4icon7 = (ImageButton) findViewById(R.id.p4icon7);
+		p4icon8 = (ImageButton) findViewById(R.id.p4icon8);
+		
+		
+		//Initialize player name texts
+		player1 = (EditText) findViewById(R.id.player1Name);
+		player2 = (EditText) findViewById(R.id.player2Name);
+		player3 = (EditText) findViewById(R.id.player3Name);
+		player4 = (EditText) findViewById(R.id.player4Name);
+		
+		//Initialize button displays
+		p1Selected = (ImageView) findViewById(R.id.p1iconSelect);
+		p2Selected = (ImageView) findViewById(R.id.p2iconSelect);
+		p3Selected = (ImageView) findViewById(R.id.p3iconSelect);
+		p4Selected = (ImageView) findViewById(R.id.p4iconSelect);
+
 		
 		startGame.setOnClickListener(new View.OnClickListener() {
 			
@@ -117,22 +117,22 @@ public class CreateGame extends ActionBarActivity {
 				int numPlayers = 0;
 				if(player1.getText().length() != 0){
 					startGame.putExtra("player1Name", player1.getText().toString());
-					startGame.putExtra("player1Image", player1Image.toString());
+					startGame.putExtra("player1Image", player1Image);
 					numPlayers++;
 					}
 				if(player2.getText().length() != 0){
 					startGame.putExtra("player2Name", player2.getText().toString());
-					startGame.putExtra("player2Image", player2Image.toString());
+					startGame.putExtra("player2Image", player2Image);
 					numPlayers++;
 				}
 				if(player3.getText().length() != 0){
 					startGame.putExtra("player3Name", player3.getText().toString());
-					startGame.putExtra("player3Image", player3Image.toString());
+					startGame.putExtra("player3Image", player3Image);
 					numPlayers++;
 				}
 				if(player4.getText().length() != 0){
 					startGame.putExtra("player4Name", player4.getText().toString());
-					startGame.putExtra("player4Image", player4Image.toString());
+					startGame.putExtra("player4Image", player4Image);
 					numPlayers++;
 				}
 				if(numPlayers < 2){
@@ -159,97 +159,141 @@ public class CreateGame extends ActionBarActivity {
 	public void onClick(View v){
 		switch(v.getId()){
 		
-		case R.id.applePlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.apple_icon);
-		case R.id.bananaPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.banana_icon);
-		case R.id.crabPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.crab_icon);
-		case R.id.facePlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.face_icon);
-		case R.id.footPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.foot_icon);
-		case R.id.greenPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.green_icon);
-		case R.id.hatPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.hat_icon);
-		case R.id.needlePlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.needle_icon);
-		case R.id.omegaPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.omega_icon);
-		case R.id.smileyPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.smiley_icon);
-		case R.id.sunPlayer1:
-			player1Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.sun_icon);
+		case R.id.p1icon1:
+			player1Image =R.drawable.icon1;
+			p1Selected.setImageResource(R.drawable.icon1);
+			break;
+		case R.id.p1icon2:
+			player1Image =R.drawable.icon2;
+			p1Selected.setImageResource(R.drawable.icon2);
+			break;
+		case R.id.p1icon3:
+			player1Image = R.drawable.icon3;
+			p1Selected.setImageResource(R.drawable.icon3);
+			break;
+		case R.id.p1icon4:
+			player1Image =R.drawable.icon4;
+			p1Selected.setImageResource(R.drawable.icon4);
+			break;
+		case R.id.p1icon5:
+			player1Image =R.drawable.icon5;
+			p1Selected.setImageResource(R.drawable.icon5);
+			break;
+		case R.id.p1icon6:
+			player1Image = R.drawable.icon6;
+			p1Selected.setImageResource(R.drawable.icon6);
+			break;
+		case R.id.p1icon7:
+			player1Image = R.drawable.icon7;
+			p1Selected.setImageResource(R.drawable.icon7);
+			break;
+		case R.id.p1icon8:
+			player1Image = R.drawable.icon8;
+			p1Selected.setImageResource(R.drawable.icon8);
+			break;
 			
-		case R.id.applePlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.apple_icon);
-		case R.id.bananaPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.banana_icon);
-		case R.id.crabPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.crab_icon);
-		case R.id.facePlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.face_icon);
-		case R.id.footPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.foot_icon);
-		case R.id.greenPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.green_icon);
-		case R.id.hatPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.hat_icon);
-		case R.id.needlePlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.needle_icon);
-		case R.id.omegaPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.omega_icon);
-		case R.id.smileyPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.smiley_icon);
-		case R.id.sunPlayer2:
-			player2Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.sun_icon);
-
-		case R.id.applePlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.apple_icon);
-		case R.id.bananaPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.banana_icon);
-		case R.id.crabPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.crab_icon);
-		case R.id.facePlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.face_icon);
-		case R.id.footPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.foot_icon);
-		case R.id.greenPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.green_icon);
-		case R.id.hatPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.hat_icon);
-		case R.id.needlePlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.needle_icon);
-		case R.id.omegaPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.omega_icon);
-		case R.id.smileyPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.smiley_icon);
-		case R.id.sunPlayer3:
-			player3Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.sun_icon);
+		case R.id.p2icon1:
+			player2Image =R.drawable.icon1;
+			p2Selected.setImageResource(R.drawable.icon1);
+			break;
+		case R.id.p2icon2:
+			player2Image =R.drawable.icon2;
+			p2Selected.setImageResource(R.drawable.icon2);
+			break;
+		case R.id.p2icon3:
+			player2Image = R.drawable.icon3;
+			p2Selected.setImageResource(R.drawable.icon3);
+			break;
+		case R.id.p2icon4:
+			player2Image = R.drawable.icon4;
+			p2Selected.setImageResource(R.drawable.icon4);
+			break;
+		case R.id.p2icon5:
+			player2Image =R.drawable.icon5;
+			p2Selected.setImageResource(R.drawable.icon5);
+			break;
+		case R.id.p2icon6:
+			player2Image =R.drawable.icon6;
+			p2Selected.setImageResource(R.drawable.icon6);
+			break;
+		case R.id.p2icon7:
+			player2Image = R.drawable.icon7;
+			p2Selected.setImageResource(R.drawable.icon7);
+			break;
+		case R.id.p2icon8:
+			player2Image = R.drawable.icon8;
+			p2Selected.setImageResource(R.drawable.icon8);
+			break;
+			
+		case R.id.p3icon1:
+			player3Image = R.drawable.icon1;
+			p3Selected.setImageResource(R.drawable.icon1);
+			break;
+		case R.id.p3icon2:
+			player3Image = R.drawable.icon2;
+			p3Selected.setImageResource(R.drawable.icon2);
+			break;
+		case R.id.p3icon3:
+			player3Image = R.drawable.icon3;
+			p3Selected.setImageResource(R.drawable.icon3);
+			break;
+		case R.id.p3icon4:
+			player3Image = R.drawable.icon4;
+			p3Selected.setImageResource(R.drawable.icon4);
+			break;
+		case R.id.p3icon5:
+			player3Image = R.drawable.icon5;
+			p3Selected.setImageResource(R.drawable.icon5);
+			break;
+		case R.id.p3icon6:
+			player3Image = R.drawable.icon6;
+			p3Selected.setImageResource(R.drawable.icon6);
+			break;
+		case R.id.p3icon7:
+			player3Image =R.drawable.icon7;
+			p3Selected.setImageResource(R.drawable.icon7);
+			break;
+		case R.id.p3icon8:
+			player3Image = R.drawable.icon8;
+			p3Selected.setImageResource(R.drawable.icon8);
+			break;
+			
+		case R.id.p4icon1:
+			player4Image = R.drawable.icon1;
+			p4Selected.setImageResource(R.drawable.icon1);
+			break;
+		case R.id.p4icon2:
+			player4Image = R.drawable.icon2;
+			p4Selected.setImageResource(R.drawable.icon2);
+			break;
+		case R.id.p4icon3:
+			player4Image = R.drawable.icon3;
+			p4Selected.setImageResource(R.drawable.icon3);
+			break;
+		case R.id.p4icon4:
+			player4Image = R.drawable.icon4;
+			p4Selected.setImageResource(R.drawable.icon4);
+			break;
+		case R.id.p4icon5:
+			player4Image = R.drawable.icon5;
+			p4Selected.setImageResource(R.drawable.icon5);
+			break;
+		case R.id.p4icon6:
+			player4Image = R.drawable.icon6;
+			p4Selected.setImageResource(R.drawable.icon6);
+			break;
+		case R.id.p4icon7:
+			player4Image =  R.drawable.icon7;
+			p4Selected.setImageResource(R.drawable.icon7);
+			break;
+		case R.id.p4icon8:
+			player4Image = R.drawable.icon8;
+			p4Selected.setImageResource(R.drawable.icon8);
+			break;
 		
-		case R.id.applePlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.apple_icon);
-		case R.id.bananaPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.banana_icon);
-		case R.id.crabPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.crab_icon);
-		case R.id.facePlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.face_icon);
-		case R.id.footPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.foot_icon);
-		case R.id.greenPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.green_icon);
-		case R.id.hatPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.hat_icon);
-		case R.id.needlePlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.needle_icon);
-		case R.id.omegaPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.omega_icon);
-		case R.id.smileyPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.smiley_icon);
-		case R.id.sunPlayer4:
-			player4Image = Uri.parse("android.resource://" + "GameOfLife" + "/drawable/" + R.drawable.sun_icon);
+		
+			
+
 			
 		
 		}
