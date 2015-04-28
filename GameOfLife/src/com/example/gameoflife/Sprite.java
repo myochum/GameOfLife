@@ -8,7 +8,9 @@ import android.net.Uri;
 public class Sprite {
 	
 	private int money, position;
-	private String island, direction, name;
+	private String island, direction;
+	private int[] margins;
+	public String name;
 	private String[] islands = new String[4];
 	
 	//image attribute - use later for drawing
@@ -22,18 +24,30 @@ public class Sprite {
 		islands[2] = "bottomRight"; islands[3] = "bottomLeft";
 		
 		Random r = new Random();
-		int position = r.nextInt(12);
-		this.position = position;
+		
+		position = 1;
 		
 		int islandNum = r.nextInt(4);
 		this.island = islands[islandNum];
 		
 		money = 0;
 		
+		margins = new int[4];
+		
+		direction = "";
+		
 	}
 	
 	public int getMoney(){
 		return this.money;
+	}
+	
+	public int[] getMargins(){
+		return this.margins;
+	}
+	
+	public void setMargins(int[] margins){
+		this.margins = margins;
 	}
 	
 	public int getPosition(){
@@ -68,4 +82,11 @@ public class Sprite {
 	}
 
 
+	public String getDirection(){
+		return direction;
+	}
+	
+	public void setDirection(String direction){
+		this.direction = direction;
+	}
 }
